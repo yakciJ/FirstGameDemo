@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bddodkfoi3qrn"]
 
-[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_pka5s"]
-[ext_resource type="Texture2D" uid="uid://bcawvityk44ve" path="res://Assets/sprites/mainmenubg.png" id="2_to8l0"]
-[ext_resource type="FontFile" uid="uid://di6d642fvvl5k" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_lpkmk"]
-[ext_resource type="FontFile" uid="uid://dnfwtu1wg2aja" path="res://Assets/fonts/PixelOperator8.ttf" id="4_etfu4"]
+[ext_resource type="Script" path="res://Scripts/GameOver.gd" id="1_b4w7q"]
+[ext_resource type="Texture2D" uid="uid://bcawvityk44ve" path="res://Assets/sprites/mainmenubg.png" id="2_6n0jm"]
+[ext_resource type="FontFile" uid="uid://dnfwtu1wg2aja" path="res://Assets/fonts/PixelOperator8.ttf" id="3_pmpfi"]
+[ext_resource type="FontFile" uid="uid://di6d642fvvl5k" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="4_wnw1f"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pka5s")
+script = ExtResource("1_b4w7q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_to8l0")
+texture = ExtResource("2_6n0jm")
 
 [node name="Score" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -38,7 +38,7 @@ theme_override_constants/separation = 20
 
 [node name="HighScore" type="Label" parent="Score/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_etfu4")
+theme_override_fonts/font = ExtResource("3_pmpfi")
 theme_override_font_sizes/font_size = 32
 text = "High Score:"
 horizontal_alignment = 1
@@ -46,7 +46,7 @@ vertical_alignment = 1
 
 [node name="CurrentScore" type="Label" parent="Score/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_etfu4")
+theme_override_fonts/font = ExtResource("3_pmpfi")
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 horizontal_alignment = 1
@@ -74,7 +74,7 @@ horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_lpkmk")
+theme_override_fonts/font = ExtResource("4_wnw1f")
 theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -98,14 +98,14 @@ layout_mode = 2
 
 [node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_etfu4")
+theme_override_fonts/font = ExtResource("3_pmpfi")
 theme_override_font_sizes/font_size = 32
 text = "Start
 "
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_etfu4")
+theme_override_fonts/font = ExtResource("3_pmpfi")
 theme_override_font_sizes/font_size = 32
 text = "Exit
 "

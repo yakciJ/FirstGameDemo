@@ -1,0 +1,5 @@
+Coin respawn / Done
+Slime respawn / Done
+Update level / Maybe
+HighScore / Done
+Start and Game over HUI / Done

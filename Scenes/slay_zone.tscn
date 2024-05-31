@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxj1oq6ulryap"]
+
+[ext_resource type="Script" path="res://Scripts/slay_zone.gd" id="1_2c706"]
+
+[node name="SlayZone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_2c706")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

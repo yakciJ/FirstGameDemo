@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx3rmek4u4pvt"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_jvnvn"]
+[ext_resource type="FontFile" uid="uid://di6d642fvvl5k" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_omngf"]
+[ext_resource type="FontFile" uid="uid://dnfwtu1wg2aja" path="res://Assets/fonts/PixelOperator8.ttf" id="2_5147s"]
+[ext_resource type="Texture2D" uid="uid://bcawvityk44ve" path="res://Assets/sprites/mainmenubg.png" id="3_jxms8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jvnvn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jxms8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="TopSpace" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_omngf")
+theme_override_font_sizes/font_size = 64
+text = "GAME DEMO"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5147s")
+theme_override_font_sizes/font_size = 32
+text = "Start
+"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5147s")
+theme_override_font_sizes/font_size = 32
+text = "Exit
+"

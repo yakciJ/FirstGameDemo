@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhhoybxd5h4rq"]
+
+[ext_resource type="FontFile" uid="uid://dnfwtu1wg2aja" path="res://Assets/fonts/PixelOperator8.ttf" id="1_0dgbp"]
+[ext_resource type="Script" path="res://Scripts/HUI.gd" id="1_3fpab"]
+
+[node name="HUI" type="CanvasLayer"]
+script = ExtResource("1_3fpab")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 98.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_0dgbp")
+theme_override_font_sizes/font_size = 32
+text = "0 coins."
+horizontal_alignment = 2

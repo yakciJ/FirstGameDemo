@@ -1,0 +1,177 @@
+[gd_scene load_steps=15 format=3 uid="uid://wf1ffw5kfcy1"]
+
+[ext_resource type="Texture2D" uid="uid://bvfwyr1au5d1x" path="res://Assets/sprites/slime_purple.png" id="1_k04l1"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_tf0pw"]
+[ext_resource type="PackedScene" uid="uid://b3mj71ij0w4nk" path="res://Scenes/kill_zone.tscn" id="2_2gudd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vu3r"]
+atlas = ExtResource("1_k04l1")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtafa"]
+atlas = ExtResource("1_k04l1")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1xks"]
+atlas = ExtResource("1_k04l1")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjlgk"]
+atlas = ExtResource("1_k04l1")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mo1dr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vu3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtafa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1xks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjlgk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_dp4vy"]
+script/source = "extends Area2D
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yggoj"]
+size = Vector2(10, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kcoc"]
+size = Vector2(8, 11)
+
+[sub_resource type="Animation" id="Animation_nal3c"]
+resource_name = "KillAndRespawn"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 18, 18.2, 18.4, 18.6, 18.8, 19, 19.2, 19.4, 19.6, 19.8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D/KillSlime/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/KillZone/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ckalp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D/KillSlime/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/KillZone/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o337t"]
+_data = {
+"KillAndRespawn": SubResource("Animation_nal3c"),
+"RESET": SubResource("Animation_ckalp")
+}
+
+[node name="Slime" type="Node2D"]
+position = Vector2(0, -7)
+script = ExtResource("1_tf0pw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_mo1dr")
+autoplay = "default"
+frame_progress = 0.832945
+
+[node name="KillSlime" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 5)
+collision_mask = 2
+script = SubResource("GDScript_dp4vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/KillSlime"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_yggoj")
+
+[node name="KillZone" parent="AnimatedSprite2D" instance=ExtResource("2_2gudd")]
+position = Vector2(0, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/KillZone"]
+shape = SubResource("RectangleShape2D_5kcoc")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+target_position = Vector2(-7, 0)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+target_position = Vector2(7, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o337t")
+}
+
+[connection signal="body_entered" from="AnimatedSprite2D/KillSlime" to="." method="_on_kill_slime_body_entered"]
